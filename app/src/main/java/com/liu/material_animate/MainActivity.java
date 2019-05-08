@@ -1,9 +1,13 @@
 package com.liu.material_animate;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -35,8 +39,10 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ResideLayout resideLayout = findViewById(R.id.reside_layout);
+        setStatusBarColor(Color.TRANSPARENT, true);
         ResideLayout.setAttribute(false,false);
         ViewPager pager = findViewById(R.id.pager);
+        TextView set=findViewById(R.id.set);
         pager.setAdapter(new SimplePagerAdapter(getSupportFragmentManager()));
         ListView menu = findViewById(R.id.menu);
 //        准备数据源
@@ -59,6 +65,12 @@ public class MainActivity extends FragmentActivity {
                 Toast.makeText(MainActivity.this, "Menu " + ++position + " selected.",
                         Toast.LENGTH_SHORT).show();
                 resideLayout.closePane();
+            }
+        });
+        set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resideLayout.openPane();
             }
         });
     }
@@ -113,6 +125,19 @@ public class MainActivity extends FragmentActivity {
             super.onViewCreated(view, savedInstanceState);
             //mView.setText("Fragment: " + mIndex);
             //mView.setTextColor(getResources().getColor(R.color.black));
+        }
+    }
+
+    protected void setStatusBarColor(int color, boolean lightStatusBar) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Window window = getWindow();
+            int visibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+            if (lightStatusBar) {
+                visibility |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            }
+            window.getDecorView().setSystemUiVisibility(visibility);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(color);
         }
     }
 }
