@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/clearCache"
+    android:layout_width="match_parent"
+    android:layout_marginTop="12dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:background="?selectableItemBackground"
+    android:paddingStart="15dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image"
+        style="@style/reside_menu_icon"
+        android:src="@drawable/icon_clear_cache" />
+
+    <TextView
+        android:id="@+id/content"
+        style="@style/reside_menu_text"
+        android:text="清除缓存" />
+    <TextView
+        android:id="@+id/cacheSize"
+        android:textSize="13sp"
+        android:textColor="#ffffff"
+        android:gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
