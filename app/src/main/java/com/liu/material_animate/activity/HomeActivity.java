@@ -1,4 +1,4 @@
-package com.liu.material_animate;
+package com.liu.material_animate.activity;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -19,7 +20,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+
+import com.liu.material_animate.R;
+import com.liu.material_animate.view.ResideLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MainActivity extends FragmentActivity {
+public class HomeActivity extends FragmentActivity {
     private SimpleAdapter adapter;
     private List<Map<String, Object>> lists;
     private String[] content = {"修改密码", "收货地址", "关于UUabc", "清除缓存"};
@@ -41,9 +44,9 @@ public class MainActivity extends FragmentActivity {
         final ResideLayout resideLayout = findViewById(R.id.reside_layout);
         setStatusBarColor(Color.TRANSPARENT, true);
         ResideLayout.setAttribute(false,false);
-        ViewPager pager = findViewById(R.id.pager);
-        TextView set=findViewById(R.id.set);
-        pager.setAdapter(new SimplePagerAdapter(getSupportFragmentManager()));
+        //ViewPager pager = findViewById(R.id.pager);
+        ImageView set=findViewById(R.id.set);
+        //pager.setAdapter(new SimplePagerAdapter(getSupportFragmentManager()));
         ListView menu = findViewById(R.id.menu);
 //        准备数据源
         lists = new ArrayList<>();
@@ -54,7 +57,7 @@ public class MainActivity extends FragmentActivity {
             map.put("cacheSize", cacheSize[i]);
             lists.add(map);
         }
-        adapter = new SimpleAdapter(MainActivity.this, lists, R.layout.list_item
+        adapter = new SimpleAdapter(HomeActivity.this, lists, R.layout.list_item
                 , new String[]{"image", "content", "cacheSize"}
                 , new int[]{R.id.image, R.id.content, R.id.cacheSize});
         menu.setAdapter(adapter);
@@ -62,8 +65,6 @@ public class MainActivity extends FragmentActivity {
         menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Menu " + ++position + " selected.",
-                        Toast.LENGTH_SHORT).show();
                 resideLayout.closePane();
             }
         });
@@ -91,9 +92,7 @@ public class MainActivity extends FragmentActivity {
             return 5;
         }
 
-
     }
-
 
     public static class SimpleFragment extends Fragment {
         private int mIndex;
@@ -116,6 +115,7 @@ public class MainActivity extends FragmentActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
             mView = new TextView(container.getContext());
+
             //mView.setBackgroundColor(Color.WHITE);
             return mView;
         }
@@ -123,6 +123,12 @@ public class MainActivity extends FragmentActivity {
         @Override
         public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
+            mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(),"点击控件",Toast.LENGTH_LONG).show();
+                }
+            });
             //mView.setText("Fragment: " + mIndex);
             //mView.setTextColor(getResources().getColor(R.color.black));
         }

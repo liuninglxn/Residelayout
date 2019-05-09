@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liu.material_animate;
+package com.liu.material_animate.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -50,7 +50,7 @@ public class ResideLayout extends ViewGroup {
     private static final String TAG = "ResideLayout";
 
     private static Boolean isDark = false;
-    private static Boolean isRotation=false;
+    private static Boolean isRotation = false;
     /**
      * Default size of the overhang for a pane in the open state.
      * At least this much of a sliding pane will remain visible.
@@ -85,7 +85,7 @@ public class ResideLayout extends ViewGroup {
      * True if a panel can slide with the current measurements
      */
     private boolean mCanSlide;
-
+    private static boolean mSlideAble=true;
     /**
      * The child view that can slide, if any.
      */
@@ -150,9 +150,17 @@ public class ResideLayout extends ViewGroup {
         }
     }
 
-    public static void setAttribute(boolean darkable,boolean isRotationable) {
-        isDark=darkable;
-        isRotation=isRotationable;
+    public static void setAttribute(boolean darkable, boolean isRotationable) {
+        isDark = darkable;
+        isRotation = isRotationable;
+    }
+
+    /**
+     * 是否可滑动
+     * @param isSlideable
+     */
+    public static void setSlideable(Boolean isSlideable) {
+        mSlideAble=isSlideable;
     }
 
     /**
@@ -161,13 +169,16 @@ public class ResideLayout extends ViewGroup {
     public interface PanelSlideListener {
         /**
          * Called when a sliding pane's position changes.
-         * @param panel The child view that was moved
+         *
+         * @param panel       The child view that was moved
          * @param slideOffset The new offset of this sliding pane within its range, from 0-1
          */
         public void onPanelSlide(View panel, float slideOffset);
+
         /**
          * Called when a sliding pane becomes slid completely open. The pane may or may not
          * be interactive at this point depending on how much of the pane is visible.
+         *
          * @param panel The child view that was slid to an open position, revealing other panes
          */
         public void onPanelOpened(View panel);
@@ -175,6 +186,7 @@ public class ResideLayout extends ViewGroup {
         /**
          * Called when a sliding pane becomes slid completely closed. The pane is now guaranteed
          * to be interactive. It may now obscure other views in the layout.
+         *
          * @param panel The child view that was slid to a closed position
          */
         public void onPanelClosed(View panel);
@@ -214,7 +226,6 @@ public class ResideLayout extends ViewGroup {
 
     /**
      * @return The distance the lower pane will parallax by when the upper pane is fully closed.
-     *
      * @see #setParallaxDistance(int)
      */
     public int getParallaxDistance() {
@@ -598,7 +609,6 @@ public class ResideLayout extends ViewGroup {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         // Recalculate sliding panes and their details
-        Log.e("Residelayout",w+"\n"+h+"\n"+oldw+"\n"+oldh);
 
         if (w != oldw) {
             mFirstLayout = true;
@@ -615,6 +625,8 @@ public class ResideLayout extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (!mSlideAble)
+            return false;
         final int action = MotionEventCompat.getActionMasked(ev);
 
         // Preserve the open state based on the last view that was touched.
@@ -662,15 +674,17 @@ public class ResideLayout extends ViewGroup {
                 final int slop = mDragHelper.getTouchSlop();
 
                 View view = findViewAtPosition(this, (int) x, (int) y);
-
-                if (adx > slop && ady > adx || view != null) {
-                    if(view != null) {
-                        Log.d(TAG, "touch on unscrollable view");
-                    }
-                    mDragHelper.cancel();
-                    mIsUnableToDrag = true;
-                    return false;
-                }
+                /**
+                 * viewpager 控制内部view是否可点击滑动
+                 */
+//                if (adx > slop && ady > adx || view != null) {
+//                    if (view != null) {
+//                        Log.d(TAG, "touch on unscrollable view");
+//                    }
+//                    mDragHelper.cancel();
+//                    mIsUnableToDrag = true;
+//                    return false;
+//                }
             }
         }
 
@@ -680,14 +694,14 @@ public class ResideLayout extends ViewGroup {
     }
 
     private View findViewAtPosition(View parent, int x, int y) {
-        if(parent instanceof ViewPager){
+        if (parent instanceof ViewPager) {
             Rect rect = new Rect();
             parent.getGlobalVisibleRect(rect);
             if (rect.contains(x, y)) {
                 return parent;
             }
-        }else if(parent instanceof ViewGroup){
-            ViewGroup viewGroup = (ViewGroup)parent;
+        } else if (parent instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) parent;
             final int length = viewGroup.getChildCount();
             for (int i = 0; i < length; i++) {
                 View child = viewGroup.getChildAt(i);
@@ -703,6 +717,8 @@ public class ResideLayout extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(@NonNull MotionEvent ev) {
+        if (!mSlideAble)
+            return false;
         if (!mCanSlide) {
             return super.onTouchEvent(ev);
         }
@@ -737,7 +753,6 @@ public class ResideLayout extends ViewGroup {
                 break;
             }
         }
-
         return true;
     }
 
@@ -804,7 +819,7 @@ public class ResideLayout extends ViewGroup {
         /**
          * 屏幕亮度调整
          */
-        if (isDark){
+        if (isDark) {
             final LayoutParams lp = (LayoutParams) v.getLayoutParams();
 
             if (mag > 0 && fadeColor != 0) {
@@ -838,7 +853,7 @@ public class ResideLayout extends ViewGroup {
 
         if (mCanSlide && !lp.slideable && mSlideableView != null) {
             // Clip against the slider; no sense drawing what will immediately be covered.
-            canvas.scale(1.2f -  0.2f * mSlideOffset, 1.2f -  0.2f * mSlideOffset, child.getRight(), getHeight() / 2);
+            canvas.scale(1.2f - 0.2f * mSlideOffset, 1.2f - 0.2f * mSlideOffset, child.getRight(), getHeight() / 2);
         } else {
             assert mSlideableView != null;
             canvas.scale(1 - mSlideOffset / 3, 1 - mSlideOffset / 3, mSlideableView.getLeft(), getHeight() / 2);
@@ -846,9 +861,9 @@ public class ResideLayout extends ViewGroup {
                 ViewCompat.setRotationY(child, -10 * mSlideOffset);//旋转角度
         }
 
-        if(!lp.slideable && mSlideOffset == 0) {
+        if (!lp.slideable && mSlideOffset == 0) {
             result = true;
-        }else {
+        } else {
             if (Build.VERSION.SDK_INT >= 11) { // HC
                 result = super.drawChild(canvas, child, drawingTime);
             } else {
@@ -884,8 +899,8 @@ public class ResideLayout extends ViewGroup {
 
     /**
      * Smoothly animate mDraggingPane to the target X position within its range.
-     *  @param slideOffset position to animate to
      *
+     * @param slideOffset position to animate to
      */
     boolean smoothSlideTo(float slideOffset) {
         if (!mCanSlide) {
@@ -1047,7 +1062,7 @@ public class ResideLayout extends ViewGroup {
 
             int startBound = getPaddingLeft() + lp.leftMargin;
             int endBound = startBound + mSlideRange;
-         //   Log.e("Residelayout","left:"+left+"startBound:"+startBound+"endBound:"+endBound);
+            //   Log.e("Residelayout","left:"+left+"startBound:"+startBound+"endBound:"+endBound);
             return Math.min(Math.max(left, startBound), endBound);
         }
 
@@ -1065,7 +1080,7 @@ public class ResideLayout extends ViewGroup {
     }
 
     public static class LayoutParams extends MarginLayoutParams {
-        private static final int[] ATTRS = new int[] {
+        private static final int[] ATTRS = new int[]{
                 android.R.attr.layout_weight
         };
 

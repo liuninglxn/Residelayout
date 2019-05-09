@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.liu.material_animate.view.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reside_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/stars" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sv_left_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_50"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/menuEnd"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/layout_left_menu"
+                tools:ignore="MissingConstraints" />
+
+            <View
+                android:id="@+id/menuBottom"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_left_menu"
+                app:layout_constraintVertical_weight="1"
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:id="@+id/layout_left_menu"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_0"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/menuBottom"
+                app:layout_constraintEnd_toStartOf="@id/menuEnd"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_15"
+                    android:background="?selectableItemBackground"
+                    android:text="@string/set"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/sp_16" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ListView
+                        android:id="@+id/menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cacheColorHint="@color/transparent"
+                        android:divider="@null" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/logout"
+                    style="@style/reside_menu_layout">
+
+                    <ImageView
+                        style="@style/reside_menu_icon"
+                        android:src="@drawable/icon_quit" />
+
+                    <TextView
+                        style="@style/reside_menu_text"
+                        android:text="@string/exit" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="@dimen/dp_8"
+        app:cardElevation="@dimen/dp_2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/flContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true">
+
+                <FrameLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/main_tab_shadow"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:gravity="center_vertical"
+                android:layout_alignParentBottom="true"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/llHome"
+                    style="@style/main_tab_layout">
+
+                    <ImageView
+                        android:id="@+id/ivHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_20"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/tab_home" />
+
+                    <TextView
+                        android:id="@+id/tvHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="首页"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llLesson"
+                    style="@style/main_tab_layout">
+
+                    <ImageView
+                        android:id="@+id/ivLesson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_20"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/tab_lesson" />
+
+                    <TextView
+                        android:id="@+id/tvLesson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="课程"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llFind"
+                    style="@style/main_tab_layout">
+
+                    <ImageView
+                        android:id="@+id/ivFind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_20"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/tab_find" />
+
+                    <TextView
+                        android:id="@+id/tvFind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="发现"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llReview"
+                    style="@style/main_tab_layout">
+
+                    <ImageView
+                        android:id="@+id/ivReview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_20"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/tab_review" />
+
+                    <TextView
+                        android:id="@+id/tvReview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="复写"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llMe"
+                    style="@style/main_tab_layout">
+
+                    <ImageView
+                        android:id="@+id/ivMe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_20"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/tab_me" />
+
+                    <TextView
+                        android:id="@+id/tvMe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="设置"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</com.liu.material_animate.view.ResideLayout>
+

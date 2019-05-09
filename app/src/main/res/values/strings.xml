@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Material-Animate</string>
+    <string name="app_name">ResideLayout</string>
+    <string name="set">设置</string>
+    <string name="exit">退出</string>
 </resources>
