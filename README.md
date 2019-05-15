@@ -23,5 +23,6 @@ Step 2. Add the dependency
 ![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557905253.png)
 ![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557905434.png)
 ![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557905444.png)
+
 属性：
  ResideLayout.setAttribute(false, false);//第一个：背景是否变暗 第二个：是否倾斜角度
