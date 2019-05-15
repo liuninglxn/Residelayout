@@ -19,9 +19,11 @@ Step 2. Add the dependency
 	}
 
 示例预览：
-
+1.在Activity中使用
 ![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906858.png)
+2.在Fragment中使用
 ![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906868.png)
+3.在Fragment+Activity中使用
 ![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906875.png)
 
 属性：
