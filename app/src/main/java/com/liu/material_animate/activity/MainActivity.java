@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.liu.material_animate.R;
 import com.liu.material_animate.fragment.MainFragment;
 import com.liu.material_animate.fragment.MainFragmentActivity;
-import com.liu.material_animate.view.ResideLayout;
+import com.liu.residelibrary.view.ResideLayout;
 
 
 public class MainActivity extends FragmentActivity {

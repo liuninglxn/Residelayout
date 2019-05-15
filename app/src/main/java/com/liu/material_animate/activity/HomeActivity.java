@@ -22,7 +22,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.liu.material_animate.R;
-import com.liu.material_animate.view.ResideLayout;
+import com.liu.residelibrary.view.ResideLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,9 +43,9 @@ public class HomeActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         final ResideLayout resideLayout = findViewById(R.id.reside_layout);
         setStatusBarColor(Color.TRANSPARENT, true);
-        ResideLayout.setAttribute(false,false);
+        ResideLayout.setAttribute(false, false);
         //ViewPager pager = findViewById(R.id.pager);
-        ImageView set=findViewById(R.id.set);
+        ImageView set = findViewById(R.id.set);
         //pager.setAdapter(new SimplePagerAdapter(getSupportFragmentManager()));
         ListView menu = findViewById(R.id.menu);
 //        准备数据源
@@ -126,7 +126,7 @@ public class HomeActivity extends FragmentActivity {
             mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(),"点击控件",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "点击控件", Toast.LENGTH_LONG).show();
                 }
             });
             //mView.setText("Fragment: " + mIndex);

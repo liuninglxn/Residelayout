@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.liu.material_animate.view;
+package com.liu.residelibrary.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,11 +22,9 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;

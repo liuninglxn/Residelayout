@@ -1,6 +1,5 @@
 package com.liu.material_animate.fragment;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,8 +17,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.liu.material_animate.R;
-import com.liu.material_animate.activity.HomeActivity;
-import com.liu.material_animate.view.ResideLayout;
+import com.liu.residelibrary.view.ResideLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;

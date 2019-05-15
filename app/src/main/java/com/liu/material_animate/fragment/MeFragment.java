@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.liu.material_animate.R;
-import com.liu.material_animate.view.ResideLayout;
+import com.liu.residelibrary.view.ResideLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
