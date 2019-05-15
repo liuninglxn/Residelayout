@@ -33,7 +33,7 @@ import java.util.Map;
 public class HomeActivity extends FragmentActivity {
     private SimpleAdapter adapter;
     private List<Map<String, Object>> lists;
-    private String[] content = {"修改密码", "收货地址", "关于UUabc", "清除缓存"};
+    private String[] content = {"修改密码", "收货地址", "关于", "清除缓存"};
     private String[] cacheSize = {"", "", "", "100M"};
     private int[] imageViews = {R.drawable.icon_change_pwd, R.drawable.icon_address, R.drawable.icon_about, R.drawable.icon_clear_cache};
 
