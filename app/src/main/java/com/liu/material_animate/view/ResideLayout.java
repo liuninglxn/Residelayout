@@ -85,7 +85,7 @@ public class ResideLayout extends ViewGroup {
      * True if a panel can slide with the current measurements
      */
     private boolean mCanSlide;
-    private static boolean mSlideAble=true;
+    private boolean mSlideAble=true;
     /**
      * The child view that can slide, if any.
      */
@@ -159,7 +159,7 @@ public class ResideLayout extends ViewGroup {
      * 是否可滑动
      * @param isSlideable
      */
-    public static void setSlideable(Boolean isSlideable) {
+    public void setSlideable(Boolean isSlideable) {
         mSlideAble=isSlideable;
     }
 
@@ -305,15 +305,11 @@ public class ResideLayout extends ViewGroup {
     }
 
     private static boolean viewIsOpaque(View v) {
-        if (ViewCompat.isOpaque(v)) return true;
+        return ViewCompat.isOpaque(v);
 
         // View#isOpaque didn't take all valid opaque scrollbar modes into account
         // before API 18 (JB-MR2). On newer devices rely solely on isOpaque above and return false
         // here. On older devices, check the view's background drawable directly as a fallback.
-        if (Build.VERSION.SDK_INT >= 18) return false;
-
-        final Drawable bg = v.getBackground();
-        return bg != null && bg.getOpacity() == PixelFormat.OPAQUE;
     }
 
     @Override
@@ -351,10 +347,8 @@ public class ResideLayout extends ViewGroup {
             }
         } else if (heightMode == MeasureSpec.UNSPECIFIED) {
             if (isInEditMode()) {
-                if (heightMode == MeasureSpec.UNSPECIFIED) {
-                    heightMode = MeasureSpec.AT_MOST;
-                    heightSize = 300;
-                }
+                heightMode = MeasureSpec.AT_MOST;
+                heightSize = 300;
             } else {
                 throw new IllegalStateException("Height must not be UNSPECIFIED");
             }

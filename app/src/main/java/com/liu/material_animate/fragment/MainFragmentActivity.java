@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainFragmentActivity extends FragmentActivity implements View.OnClickListener {
+    private ResideLayout mResideLayout;
     private TextView mTvHome, mTvLesson, mTvMe, mTvReview;
     private ImageView mIvHome, mIvLesson, mIvMe, mIvReview;
     private Fragment mHomeFragment, mLessonFragment, mMeFragment, mReviewFragment, mCurrentFragment;
@@ -48,6 +49,7 @@ public class MainFragmentActivity extends FragmentActivity implements View.OnCli
 
         setContentView(R.layout.activity_fragact);
 
+        mResideLayout = findViewById(R.id.reside_layout);
         mTvHome = findViewById(R.id.tvHome);
         mIvHome = findViewById(R.id.ivHome);
         mTvLesson = findViewById(R.id.tvLesson);
@@ -65,7 +67,6 @@ public class MainFragmentActivity extends FragmentActivity implements View.OnCli
         findViewById(R.id.llFind).setOnClickListener(this);
         initFragment(savedInstanceState);
 
-        final ResideLayout resideLayout = findViewById(R.id.reside_layout);
         setStatusBarColor(Color.TRANSPARENT, true);
         ResideLayout.setAttribute(false,false);
         //pager.setAdapter(new SimplePagerAdapter(getSupportFragmentManager()));
@@ -87,7 +88,7 @@ public class MainFragmentActivity extends FragmentActivity implements View.OnCli
         menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                resideLayout.closePane();
+                mResideLayout.closePane();
             }
         });
     }
@@ -119,35 +120,35 @@ public class MainFragmentActivity extends FragmentActivity implements View.OnCli
                 resetNavi();
                 mTvHome.setTextColor(mColorSelect);
                 mIvHome.setImageResource(R.drawable.tab_home_c);
-                ResideLayout.setSlideable(false);
+                mResideLayout.setSlideable(false);
                 break;
             case R.id.llLesson:
                 showFragment(mLessonFragment);
                 resetNavi();
                 mTvLesson.setTextColor(mColorSelect);
                 mIvLesson.setImageResource(R.drawable.tab_lesson_c);
-                ResideLayout.setSlideable(false);
+                mResideLayout.setSlideable(false);
                 break;
             case R.id.llReview:
                 showFragment(mReviewFragment);
                 resetNavi();
                 mTvReview.setTextColor(mColorSelect);
                 mIvReview.setImageResource(R.drawable.tab_review_c);
-                ResideLayout.setSlideable(false);
+                mResideLayout.setSlideable(false);
                 break;
             case R.id.llMe:
                 showFragment(mMeFragment);
                 resetNavi();
                 mTvMe.setTextColor(mColorSelect);
                 mIvMe.setImageResource(R.drawable.tab_me_c);
-                ResideLayout.setSlideable(true);
+                mResideLayout.setSlideable(true);
                 break;
             case R.id.llFind:
                 showFragment(findFragment);
                 resetNavi();
                 tvFind.setTextColor(mColorSelect);
                 ivFind.setImageResource(R.drawable.tab_find_c);
-                ResideLayout.setSlideable(false);
+                mResideLayout.setSlideable(false);
                 break;
         }
     }
