@@ -17,8 +17,10 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.liuninglxn:Residelayout:v1.0.2'
 	}
+	
 如何使用：
 ResideLayout：在布局中直接引用
+
     <com.liu.residelibrary.view.ResideLayout    
          android:id="@+id/reside_layout"
          android:layout_width="match_parent"
@@ -26,14 +28,17 @@ ResideLayout：在布局中直接引用
          ......
     </com.liu.residelibrary.view.ResideLayout>
 
-WaveView：
-注意：
+WaveView 注意：
+
 1）在AndroidManifest中修改theme
+
          <activity
              android:name=".activity.WaveActivity"
              android:screenOrientation="portrait"
              android:theme="@style/SurfaceTheme"/>
+
 2）添加SurfaceTheme
+
          <style name="SurfaceTheme" parent="Theme.AppCompat.NoActionBar">
                  <!-- Customize your theme here. -->
                  <item name="android:windowIsTranslucent">true</item>
@@ -41,6 +46,7 @@ WaveView：
          </style>
 
 在布局中直接引用
+
     <com.liu.residelibrary.waveview.WaveView
             android:id="@+id/wavaview"
             android:layout_width="match_parent"
@@ -50,8 +56,11 @@ WaveView：
             app:wlvLineColor="@color/pink"
             app:wlvMoveSpeed="350"
             app:wlvThickLineWidth="1dp" />
+	    
 在代码中使用：
+
     开始：wavaview.startAnim()
+    
     结束：wavaview.stopAnim()
 
 示例预览：
