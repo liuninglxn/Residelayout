@@ -19,10 +19,7 @@ Step 2. Add the dependency
 	}
 如何使用：
 ResideLayout：在布局中直接引用
-    <com.liu.residelibrary.view.ResideLayout
-         xmlns:android="http://schemas.android.com/apk/res/android"
-         xmlns:app="http://schemas.android.com/apk/res-auto"
-         xmlns:tools="http://schemas.android.com/tools"
+    <com.liu.residelibrary.view.ResideLayout    
          android:id="@+id/reside_layout"
          android:layout_width="match_parent"
          android:layout_height="match_parent">
