@@ -65,7 +65,7 @@ WaveView 注意：
 
 示例预览：
 1.在Activity中使用
-![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906858.png，https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906868.png，https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906868.png)
+![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906858.png)
 2.在Fragment中使用
 ![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906868.png)
 3.在Fragment+Activity中使用
