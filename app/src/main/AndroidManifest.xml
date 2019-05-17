@@ -26,7 +26,9 @@
         </activity>
         <activity android:name=".fragment.MainFragmentActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.WaveActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.WaveActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SurfaceTheme"/>
     </application>
 </manifest>

@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  */
-public abstract class RenderViewEx extends SurfaceView implements SurfaceHolder.Callback {
+public abstract class RenderView extends SurfaceView implements SurfaceHolder.Callback {
 
     //是否正在绘制动画
     private boolean isStartAnim = false;
@@ -29,15 +29,15 @@ public abstract class RenderViewEx extends SurfaceView implements SurfaceHolder.
      */
     protected abstract void onRender(Canvas canvas, long millisPassed);
 
-    public RenderViewEx(Context context) {
+    public RenderView(Context context) {
         this(context, null);
     }
 
-    public RenderViewEx(Context context, AttributeSet attrs) {
+    public RenderView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RenderViewEx(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RenderView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         getHolder().addCallback(this);
     }
@@ -46,11 +46,11 @@ public abstract class RenderViewEx extends SurfaceView implements SurfaceHolder.
     private static class RenderThread extends Thread {
 
         private static final long SLEEP_TIME = 16;
-        private WeakReference<RenderViewEx> renderView;
+        private WeakReference<RenderView> renderView;
         private boolean running = false;
         private boolean destoryed = false;
         private boolean isPause = false;
-        public RenderThread(RenderViewEx renderView) {
+        public RenderThread(RenderView renderView) {
             super("RenderThread");
             this.renderView = new WeakReference<>(renderView);
         }
@@ -62,7 +62,7 @@ public abstract class RenderViewEx extends SurfaceView implements SurfaceHolder.
             return null;
         }
 
-        private RenderViewEx getRenderView(){
+        private RenderView getRenderView(){
             return renderView.get();
         }
 

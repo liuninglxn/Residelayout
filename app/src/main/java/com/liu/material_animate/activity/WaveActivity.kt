@@ -22,19 +22,15 @@ class WaveActivity : FragmentActivity() {
         record.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    wavaview.visibility = View.VISIBLE
                     wavaview.startAnim()
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    wavaview.visibility = View.VISIBLE
                     wavaview.startAnim()
                 }
                 MotionEvent.ACTION_UP -> {
-                    wavaview.visibility = View.INVISIBLE
                     wavaview.stopAnim()
                 }
                 MotionEvent.ACTION_CANCEL -> {
-                    wavaview.visibility = View.INVISIBLE
                     wavaview.stopAnim()
                 }
             }

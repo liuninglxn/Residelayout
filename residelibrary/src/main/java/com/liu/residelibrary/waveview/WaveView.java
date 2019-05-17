@@ -1,5 +1,6 @@
 package com.liu.residelibrary.waveview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -14,7 +15,7 @@ import com.liu.residelibrary.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WaveViewEx extends RenderViewEx {
+public class WaveView extends RenderView {
     //采样点的数量，越高越精细，但是高于一定限度肉眼很难分辨，越高绘制效率越低
     private int samplingSize;
     //控制向右偏移速度，越小偏移速度越快
@@ -32,7 +33,7 @@ public class WaveViewEx extends RenderViewEx {
     private int sensibility;
 
     //背景色
-    private int backGroundColor = Color.TRANSPARENT;
+    private int backGroundColor = Color.WHITE;
 
     //波浪线颜色
     private int lineColor;
@@ -58,7 +59,7 @@ public class WaveViewEx extends RenderViewEx {
 
     //不同函数曲线系数
     private float[] pathFuncs = {
-            0.6f, 0.3f, 0.2f, -0.2f
+            0.6f, 0.35f, 0.1f, -0.1f
     };
 
     //采样点X坐标
@@ -84,28 +85,29 @@ public class WaveViewEx extends RenderViewEx {
     //是否开启准备动画
     private boolean isOpenPrepareAnim = false;
 
-    private boolean isTransparentMode = true;
-    public WaveViewEx(Context context) {
+    private boolean isTransparentMode = false;
+    public WaveView(Context context) {
         this(context, null);
     }
 
-    public WaveViewEx(Context context, AttributeSet attrs) {
+    public WaveView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public WaveViewEx(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WaveView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttr(attrs);
     }
 
     private void initAttr(AttributeSet attrs) {
+        @SuppressLint("CustomViewStyleable")
         TypedArray t = getContext().obtainStyledAttributes(attrs, R.styleable.WaveLineView);
         backGroundColor = t.getColor(R.styleable.WaveLineView_wlvBackgroundColor, Color.WHITE);
         int DEFAULT_SAMPLING_SIZE = 64;
         samplingSize = t.getInt(R.styleable.WaveLineView_wlvSamplingSize, DEFAULT_SAMPLING_SIZE);
         lineColor = t.getColor(R.styleable.WaveLineView_wlvLineColor, Color.parseColor("#2ED184"));
         thickLineWidth = (int)t.getDimension(R.styleable.WaveLineView_wlvThickLineWidth, 6);
-        fineLineWidth = (int)t.getDimension(R.styleable.WaveLineView_wlvFineLineWidth, 5);
+        fineLineWidth = (int)t.getDimension(R.styleable.WaveLineView_wlvFineLineWidth, 2);
         float DEFAULT_OFFSET_SPEED = 250F;
         offsetSpeed = t.getFloat(R.styleable.WaveLineView_wlvMoveSpeed, DEFAULT_OFFSET_SPEED);
         int DEFAULT_SENSIBILITY = 5;
@@ -115,11 +117,13 @@ public class WaveViewEx extends RenderViewEx {
         checkVolumeValue();
         checkSensibilityValue();
         //将RenderView放到最顶层
-        setZOrderOnTop(true);
+       // setZOrderOnTop(true);
+        setZOrderMediaOverlay(true);
         if (getHolder() != null) {
             //使窗口支持透明度
             getHolder().setFormat(PixelFormat.TRANSLUCENT);
         }
+
     }
 
     @Override
@@ -152,7 +156,7 @@ public class WaveViewEx extends RenderViewEx {
                 curY = (float) (amplitude * calcValue(mapX[i], offset));
                 for (int n = 0; n < paths.size(); n++) {
                     //四条线分别乘以不同的函数系数
-                    float realY = curY * pathFuncs[n] * volume * 0.05f;
+                    float realY = curY * pathFuncs[n] * volume * 0.04f;
                     paths.get(n).lineTo(x, centerHeight + realY);
                 }
             }
@@ -170,13 +174,11 @@ public class WaveViewEx extends RenderViewEx {
                     paint.setAlpha((int)(255 * alphaInAnim()));
                 } else {
                     paint.setStrokeWidth(fineLineWidth);
-                    paint.setAlpha((int)(155 * alphaInAnim()));
+                    paint.setAlpha((int)(120 * alphaInAnim()));
                 }
                 canvas.drawPath(paths.get(n), paint);
             }
-
         }
-
     }
 
     //检查音量是否合法
