@@ -63,13 +63,5 @@ WaveView 注意：
     
     结束：wavaview.stopAnim()
 
-示例预览：
-1.在Activity中使用
-![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906858.png)
-2.在Fragment中使用
-![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906868.png)
-3.在Fragment+Activity中使用
-![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906875.png)
-
 属性：
  ResideLayout.setAttribute(false, false);//第一个：背景是否变暗 第二个：是否倾斜角度
