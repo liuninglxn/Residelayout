@@ -27,12 +27,13 @@ ResideLayout：在布局中直接引用
     </com.liu.residelibrary.view.ResideLayout>
 
 WaveView：
-注意：在AndroidManifest中修改theme
+注意：
+1）在AndroidManifest中修改theme
          <activity
              android:name=".activity.WaveActivity"
              android:screenOrientation="portrait"
              android:theme="@style/SurfaceTheme"/>
-
+2）添加SurfaceTheme
          <style name="SurfaceTheme" parent="Theme.AppCompat.NoActionBar">
                  <!-- Customize your theme here. -->
                  <item name="android:windowIsTranslucent">true</item>
@@ -50,17 +51,9 @@ WaveView：
             app:wlvMoveSpeed="350"
             app:wlvThickLineWidth="1dp" />
 在代码中使用：
-    record.setOnTouchListener { _, event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        wavaview.startAnim()
-                    }
-                    MotionEvent.ACTION_UP -> {
-                        wavaview.stopAnim()
-                    }
-                }
-                true
-            }
+    开始：wavaview.startAnim()
+    结束：wavaview.stopAnim()
+
 示例预览：
 1.在Activity中使用
 ![Image text](https://raw.githubusercontent.com/liuninglxn/Residelayout/master/image/Screenshot_1557906858.png)
