@@ -36,6 +36,8 @@ open class MainActivity : FragmentActivity() {
             val actIntent = Intent(this@MainActivity, WaveActivity::class.java)
             startActivity(actIntent)
         }
+        textView.setCornerSize(0,0,30,30)
+        imageView.setCornerSize(0,0,30,30)
     }
 
     private fun setStatusBarColor(color: Int, lightStatusBar: Boolean) {

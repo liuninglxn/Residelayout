@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:text="Activity"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="50dp"
         android:text="Fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:text="FragmentActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -45,11 +45,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:text="waveview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <com.liu.residelibrary.view.CornersTextView
+        android:id="@+id/textView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:text="111111111111"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waveview" />
+
+    <com.liu.residelibrary.view.CornersImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:cornerSize="8dp"
+        android:src="@color/colorAccent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

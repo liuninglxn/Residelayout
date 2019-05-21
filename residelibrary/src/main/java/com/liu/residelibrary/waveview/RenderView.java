@@ -108,7 +108,6 @@ public abstract class RenderView extends SurfaceView implements SurfaceHolder.Ca
 
         }
 
-
         public void setRun(boolean isRun) {
             this.running = isRun;
         }

@@ -59,7 +59,7 @@ public class WaveView extends RenderView {
 
     //不同函数曲线系数
     private float[] pathFuncs = {
-            0.6f, 0.35f, 0.1f, -0.1f
+            0.5f, 0.3f, 0.2f, -0.1f
     };
 
     //采样点X坐标
