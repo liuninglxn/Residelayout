@@ -46,8 +46,8 @@ ShadowLayout:阴影的效果
     app:shadowColor="#29000000" 控制阴影的颜色，注意：颜色必须带有透明度的值
     app:shadowShape="rectangle|oval" 控制阴影的形状：圆角矩形|圆形
     app:shadowDx="0dp" 控制阴影 x 轴的偏移量
-    app:shadowDy="3dp" 控制阴影 y 轴的偏移量
-    app:shadowRadius="10dp" 控制阴影的范围
+    app:shadowDy="6dp" 控制阴影 y 轴的偏移量
+    app:shadowRadius="8dp" 控制阴影的范围
     app:shadowSide="all|left|right|top|bottom" 控制阴影显示的边界，共有五个值
     
 WaveView 注意：
