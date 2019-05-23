@@ -28,6 +28,28 @@ ResideLayout：在布局中直接引用
          ......
     </com.liu.residelibrary.view.ResideLayout>
 
+ShadowLayout:阴影的效果
+
+    <com.liu.residelibrary.shadow.ShadowLayout
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:shadowColor="#29000000"
+        app:shadowShape="rectangle"
+        app:shadowDx="0dp"
+        app:shadowDy="6dp"
+        app:shadowRadius="8dp"
+        app:shadowSide="all"/>
+        
+    如上面 xml 中代码显示的那样，总共有 6 个自定义属性，其含义分别如下：
+    
+    app:shadowColor="#29000000" 控制阴影的颜色，注意：颜色必须带有透明度的值
+    app:shadowShape="rectangle|oval" 控制阴影的形状：圆角矩形|圆形
+    app:shadowDx="0dp" 控制阴影 x 轴的偏移量
+    app:shadowDy="3dp" 控制阴影 y 轴的偏移量
+    app:shadowRadius="10dp" 控制阴影的范围
+    app:shadowSide="all|left|right|top|bottom" 控制阴影显示的边界，共有五个值
+    
 WaveView 注意：
 
 1）在AndroidManifest中修改theme
@@ -64,4 +86,5 @@ WaveView 注意：
     结束：wavaview.stopAnim()
 
 属性：
- ResideLayout.setAttribute(false, false);//第一个：背景是否变暗 第二个：是否倾斜角度
+
+    ResideLayout.setAttribute(false, false);//第一个：背景是否变暗 第二个：是否倾斜角度

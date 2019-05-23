@@ -9,6 +9,7 @@ import android.view.View
 import android.view.WindowManager
 import androidx.fragment.app.FragmentActivity
 import com.liu.material_animate.R
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_waveview.*
 
 
@@ -18,14 +19,14 @@ class WaveActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_waveview)
         setStatusBarColor(Color.TRANSPARENT, true)
-
+        wavaview.setVolume(100)
         record.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     wavaview.startAnim()
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    wavaview.startAnim()
+                    //wavaview.startAnim()
                 }
                 MotionEvent.ACTION_UP -> {
                     wavaview.stopAnim()

@@ -1,6 +1,5 @@
 package com.liu.residelibrary.waveview;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -16,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WaveView extends RenderView {
+    private final int DEFAULT_SAMPLING_SIZE = 64;
+    private final float DEFAULT_OFFSET_SPEED =  250F;
+    private final int DEFAULT_SENSIBILITY =  5;
     //采样点的数量，越高越精细，但是高于一定限度肉眼很难分辨，越高绘制效率越低
     private int samplingSize;
     //控制向右偏移速度，越小偏移速度越快
@@ -100,17 +102,13 @@ public class WaveView extends RenderView {
     }
 
     private void initAttr(AttributeSet attrs) {
-        @SuppressLint("CustomViewStyleable")
         TypedArray t = getContext().obtainStyledAttributes(attrs, R.styleable.WaveLineView);
         backGroundColor = t.getColor(R.styleable.WaveLineView_wlvBackgroundColor, Color.WHITE);
-        int DEFAULT_SAMPLING_SIZE = 64;
         samplingSize = t.getInt(R.styleable.WaveLineView_wlvSamplingSize, DEFAULT_SAMPLING_SIZE);
         lineColor = t.getColor(R.styleable.WaveLineView_wlvLineColor, Color.parseColor("#2ED184"));
         thickLineWidth = (int)t.getDimension(R.styleable.WaveLineView_wlvThickLineWidth, 6);
         fineLineWidth = (int)t.getDimension(R.styleable.WaveLineView_wlvFineLineWidth, 2);
-        float DEFAULT_OFFSET_SPEED = 250F;
         offsetSpeed = t.getFloat(R.styleable.WaveLineView_wlvMoveSpeed, DEFAULT_OFFSET_SPEED);
-        int DEFAULT_SENSIBILITY = 5;
         sensibility = t.getInt(R.styleable.WaveLineView_wlvSensibility, DEFAULT_SENSIBILITY);
         isTransparentMode = backGroundColor == Color.TRANSPARENT;
         t.recycle();
