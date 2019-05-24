@@ -54,19 +54,24 @@
 
     <com.liu.residelibrary.shadow.ShadowLayout
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/stroke_3e71e0_4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waveview"
         app:shadowColor="#29000000"
-        app:shadowShape="rectangle"
+        app:shadowShape="rectround"
         app:shadowDx="0dp"
         app:shadowDy="6dp"
         app:shadowRadius="8dp"
-        app:shadowSide="all"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waveview" />
-
-
+        app:shadowSide="all">
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:adjustViewBounds="true"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:src="@drawable/stroke_3e71e0_4dp"/>-->
+    </com.liu.residelibrary.shadow.ShadowLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

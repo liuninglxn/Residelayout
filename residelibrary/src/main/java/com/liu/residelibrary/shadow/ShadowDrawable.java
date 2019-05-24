@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -21,19 +22,21 @@ import androidx.annotation.Nullable;
  * Email: lijiankun03@meituan.com
  */
 public class ShadowDrawable extends Drawable {
-
+    private Path mPath;
     private Paint mShadowPaint;
     private int mShape;
+    private float[] mRadius;
     private float mShadowRadius;
     private float mOffsetX;
     private float mOffsetY;
     private RectF mRect;
 
-    public ShadowDrawable(int shape, int shadowColor, float shadowRadius, float offsetX, float offsetY) {
+    public ShadowDrawable(int shape, int shadowColor, float shadowRadius, float offsetX, float offsetY, float[] Radius) {
         this.mShape = shape;
         this.mShadowRadius = shadowRadius;
         this.mOffsetX = offsetX;
         this.mOffsetY = offsetY;
+        this.mRadius = Radius;
 
         mShadowPaint = new Paint();
         mShadowPaint.setColor(Color.TRANSPARENT);
@@ -65,6 +68,11 @@ public class ShadowDrawable extends Drawable {
             canvas.drawRect(mRect, mShadowPaint);
         } else if (mShape == ShadowLayout.SHAPE_OVAL) {
             canvas.drawCircle(mRect.centerX(), mRect.centerY(), Math.min(mRect.width(), mRect.height()) / 2, mShadowPaint);
+        } else {
+            mPath = new Path();
+            mPath.addRoundRect(mRect, mRadius, Path.Direction.CCW);
+            canvas.drawPath(mPath, mShadowPaint);
+            //canvas.drawRoundRect(mRect,mRadius,mRadius,mShadowPaint);//drawPath(mPath, mShadowPaint);
         }
     }
 
