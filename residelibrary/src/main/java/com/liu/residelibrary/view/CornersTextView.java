@@ -7,17 +7,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewParent;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
-
 import com.liu.residelibrary.R;
-
-import java.lang.reflect.Field;
 
 /**
  * Created by
@@ -84,47 +80,7 @@ public class CornersTextView extends AppCompatTextView {
 
         if (vp instanceof View) {
             View parentView = (View) vp;
-            int color = getViewBackgroundColor(parentView);
-
-            if (Color.TRANSPARENT != color) {
-                return color;
-            } else {
-                getPaintColor(parentView.getParent());
-            }
-        }
-
-        return Color.TRANSPARENT;
-    }
-
-    /**
-     * @param view
-     * @return
-     */
-    private int getViewBackgroundColor(View view) {
-        Drawable drawable = view.getBackground();
-
-        if (null != drawable) {
-            Class<Drawable> drawableClass = (Class<Drawable>) drawable.getClass();
-            if (null == drawableClass) {
-                return Color.TRANSPARENT;
-            }
-
-            try {
-                Field field = drawableClass.getDeclaredField("mColorState");
-                field.setAccessible(true);
-                Object colorState = field.get(drawable);
-                Class colorStateClass = colorState.getClass();
-                Field colorStateField = colorStateClass.getDeclaredField("mUseColor");
-                colorStateField.setAccessible(true);
-                int viewColor = (int) colorStateField.get(colorState);
-                if (Color.TRANSPARENT != viewColor) {
-                    return viewColor;
-                }
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+            getPaintColor(parentView.getParent());
         }
         return Color.TRANSPARENT;
     }
