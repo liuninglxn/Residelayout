@@ -39,7 +39,7 @@ dependencies {
     implementation project(path: ':residelibrary')
     implementation "androidx.core:core-ktx:1.0.2"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    //implementation 'com.github.liuninglxn:Residelayout:v1.0.2'
+    //implementation 'com.github.liuninglxn:Residelayout:v1.0.4'
 }
 repositories {
     mavenCentral()
