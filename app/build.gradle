@@ -38,7 +38,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation project(path: ':residelibrary')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    //implementation 'com.github.liuninglxn:Residelayout:v1.0.6'
+   // implementation 'com.github.liuninglxn:Residelayout:v1.0.7'
 }
 repositories {
     mavenCentral()

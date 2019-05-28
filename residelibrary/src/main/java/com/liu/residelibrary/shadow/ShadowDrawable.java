@@ -58,6 +58,8 @@ public class ShadowDrawable extends Drawable {
         Log.i("ShadowLayout1", "ShadowDrawable1 setBounds mRect.top " + mRect.top);
         Log.i("ShadowLayout1", "ShadowDrawable1 setBounds mRect.right " + mRect.right);
         Log.i("ShadowLayout1", "ShadowDrawable1 setBounds mRect.bottom " + mRect.bottom);
+        mPath = new Path();
+        mPath.addRoundRect(mRect, mRadius, Path.Direction.CCW);
     }
 
     @Override
@@ -69,10 +71,7 @@ public class ShadowDrawable extends Drawable {
         } else if (mShape == ShadowLayout.SHAPE_OVAL) {
             canvas.drawCircle(mRect.centerX(), mRect.centerY(), Math.min(mRect.width(), mRect.height()) / 2, mShadowPaint);
         } else {
-            mPath = new Path();
-            mPath.addRoundRect(mRect, mRadius, Path.Direction.CCW);
             canvas.drawPath(mPath, mShadowPaint);
-            //canvas.drawRoundRect(mRect,mRadius,mRadius,mShadowPaint);//drawPath(mPath, mShadowPaint);
         }
     }
 

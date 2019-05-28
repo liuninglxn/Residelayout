@@ -61,7 +61,7 @@ public class WaveView extends RenderView {
 
     //不同函数曲线系数
     private float[] pathFuncs = {
-            0.5f, 0.3f, 0.2f, -0.1f
+            0.5f, 0.3f, 0.1f, -0.1f
     };
 
     //采样点X坐标
@@ -154,7 +154,7 @@ public class WaveView extends RenderView {
                 curY = (float) (amplitude * calcValue(mapX[i], offset));
                 for (int n = 0; n < paths.size(); n++) {
                     //四条线分别乘以不同的函数系数
-                    float realY = curY * pathFuncs[n] * volume * 0.04f;
+                    float realY = curY * pathFuncs[n] * volume * 0.02f;
                     paths.get(n).lineTo(x, centerHeight + realY);
                 }
             }
