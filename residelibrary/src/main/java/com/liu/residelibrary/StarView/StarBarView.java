@@ -16,7 +16,7 @@ import com.liu.residelibrary.R;
 
 /**
  * 显示星星评论数控件
- * Created by CaptionDeng on 2016/8/30.
+ * Created by liuning on 2018/5/29.
  */
 public class StarBarView extends View {
     //星星水平排列

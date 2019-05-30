@@ -12,14 +12,8 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 
-import androidx.appcompat.widget.AppCompatTextView;
-
 import com.liu.residelibrary.R;
 
-/**
- * Created by
- * Description
- */
 public class CornersFrameLayout extends FrameLayout {
 
     private Path mPath;

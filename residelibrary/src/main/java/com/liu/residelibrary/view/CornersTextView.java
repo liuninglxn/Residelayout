@@ -15,10 +15,6 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.liu.residelibrary.R;
 
-/**
- * Created by
- * Description
- */
 public class CornersTextView extends AppCompatTextView {
 
     private Path mPath;

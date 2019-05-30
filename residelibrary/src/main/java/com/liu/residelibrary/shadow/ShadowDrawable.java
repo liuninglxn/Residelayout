@@ -18,8 +18,7 @@ import androidx.annotation.Nullable;
 /**
  * ShadowDrawable
  * <p>
- * Created by lijiankun on 2018/9/28
- * Email: lijiankun03@meituan.com
+ * Created by liuning on 2019/5/28
  */
 public class ShadowDrawable extends Drawable {
     private Path mPath;

@@ -20,8 +20,7 @@ import com.liu.residelibrary.R;
 /**
  * ShadowLayout
  * <p>
- * Created by lijiankun24 on 2018/9/25
- * Email: jiankunli24@gmail.com
+ * Created by liuning on 2019/5/28
  */
 public class ShadowLayout extends FrameLayout {
 
@@ -50,10 +49,6 @@ public class ShadowLayout extends FrameLayout {
     private float mShadowRadius = 0;
 
     private float[] mRadius;
-    private float mLeftTopCorner=0;
-    private float mRightTopCorner=0;
-    private float mRightBottomCorner=0;
-    private float mLeftBottomCorner=0;
     /**
      * 阴影 x 轴的偏移量
      */
@@ -98,15 +93,15 @@ public class ShadowLayout extends FrameLayout {
                     getContext().getResources().getColor(android.R.color.black));
             mShadowDx = typedArray.getDimension(R.styleable.ShadowLayout_shadowDx, 0);
             mShadowDy = typedArray.getDimension(R.styleable.ShadowLayout_shadowDy, 0);
-            mLeftTopCorner = typedArray.getDimension(R.styleable.ShadowLayout_shadowleftTop, 0);
-            mRightTopCorner = typedArray.getDimension(R.styleable.ShadowLayout_shadowrightTop, 0);
-            mRightBottomCorner = typedArray.getDimension(R.styleable.ShadowLayout_shadowrightBottom, 0);
-            mLeftBottomCorner = typedArray.getDimension(R.styleable.ShadowLayout_shadowleftBottom, 0);
+            float mLeftTopCorner = typedArray.getDimension(R.styleable.ShadowLayout_shadowleftTop, 0);
+            float mRightTopCorner = typedArray.getDimension(R.styleable.ShadowLayout_shadowrightTop, 0);
+            float mRightBottomCorner = typedArray.getDimension(R.styleable.ShadowLayout_shadowrightBottom, 0);
+            float mLeftBottomCorner = typedArray.getDimension(R.styleable.ShadowLayout_shadowleftBottom, 0);
 
             mShadowSide = typedArray.getInt(R.styleable.ShadowLayout_shadowSide, ALL);
 
             typedArray.recycle();
-            mRadius= new float[]{
+            mRadius = new float[]{
                     mLeftTopCorner, mLeftTopCorner,
                     mRightTopCorner, mRightTopCorner,
                     mRightBottomCorner, mRightBottomCorner,
@@ -114,7 +109,7 @@ public class ShadowLayout extends FrameLayout {
         }
 
         mShadowDrawable = new ShadowDrawable(mShadowShape, mShadowColor,
-                mShadowRadius, mShadowDx, mShadowDy,mRadius);
+                mShadowRadius, mShadowDx, mShadowDy, mRadius);
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);       // 关闭硬件加速
     }
 
